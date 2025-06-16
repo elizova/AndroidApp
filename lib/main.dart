@@ -1,13 +1,14 @@
+import 'package:android_app/core/routes/app_routes.dart';
 import 'package:android_app/core/theme/app_theme.dart';
 import 'package:android_app/domain/entities/activity.dart';
 import 'package:android_app/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:android_app/features/activity/presentation/screens/activity_detail_screen.dart';
-import 'package:android_app/features/activity/presentation/screens/activity_tab_wrapper.dart';
+import 'package:android_app/features/activity/presentation/screens/activity_list_screen.dart';
 import 'package:android_app/features/activity/presentation/screens/new_activity_screen.dart';
 import 'package:android_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:android_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:android_app/features/auth/presentation/screens/welcome_screen.dart';
-import 'package:android_app/features/profile/presentation/screens/profile_tab.dart';
+import 'package:android_app/features/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,18 +28,18 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Activity Tracker',
         theme: AppTheme.lightTheme,
-        initialRoute: '/welcome',
+        initialRoute: AppRoutes.welcome,
         routes: {
-          '/welcome': (context) => const WelcomeScreen(),
-          '/login': (context) => const LoginScreen(),
-          '/register': (context) => const RegisterScreen(),
-          '/activity': (context) => const ActivityPage(),
-          '/activity-detail': (context) {
-            final activity =
-                ModalRoute.of(context)!.settings.arguments as Activity;
+          AppRoutes.welcome: (context) => const WelcomeScreen(),
+          AppRoutes.login: (context) => const LoginScreen(),
+          AppRoutes.register: (context) => const RegisterScreen(),
+          AppRoutes.activities: (context) => const ActivityListScreen(),
+          AppRoutes.activityDetail: (context) {
+            final activity = ModalRoute.of(context)!.settings.arguments as Activity;
             return ActivityDetailScreen(activity: activity);
           },
-          '/new-activity': (context) => const NewActivityScreen(),
+          AppRoutes.newActivity: (context) => const NewActivityScreen(),
+          AppRoutes.profile: (context) => const ProfileScreen(),
         },
       ),
     );
@@ -61,8 +62,8 @@ class _MainScreenState extends State<MainScreen> {
       body: IndexedStack(
         index: _selectedIndex,
         children: const [
-          ActivityPage(),
-          ProfileTab(),
+          ActivityListScreen(),
+          ProfileScreen(),
         ],
       ),
       bottomNavigationBar: NavigationBar(

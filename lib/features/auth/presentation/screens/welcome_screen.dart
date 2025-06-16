@@ -1,3 +1,4 @@
+import 'package:android_app/core/routes/app_routes.dart';
 import 'package:android_app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -33,12 +34,12 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   ElevatedButton(
-                    onPressed: () => Navigator.pushNamed(context, '/register'),
+                    onPressed: () => Navigator.pushNamed(context, AppRoutes.register),
                     child: const Text('Зарегистрироваться'),
                   ),
                   const SizedBox(height: 16),
                   TextButton(
-                    onPressed: () => Navigator.pushNamed(context, '/login'),
+                    onPressed: () => Navigator.pushNamed(context, AppRoutes.login),
                     child: const Text('Уже есть аккаунт'),
                   ),
                 ],
