@@ -1,0 +1,72 @@
+import 'package:android_app/core/presentation/widgets/bottom_nav_bar.dart';
+import 'package:android_app/features/activity/presentation/bloc/activity_bloc.dart';
+import 'package:android_app/features/activity/presentation/widgets/activity_card.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class ActivityListScreen extends StatelessWidget {
+  const ActivityListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        title: const Text('Activities'),
+        elevation: 0,
+      ),
+      body: BlocBuilder<ActivityBloc, ActivityState>(
+        builder: (context, activities) {
+          if (activities.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.directions_run,
+                    size: 64,
+                    color: Theme.of(context).primaryColor.withAlpha(100),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'No activities yet',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Start tracking your activities',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            );
+          }
+
+          return ListView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            itemCount: activities.length,
+            itemBuilder: (context, index) {
+              final activity = activities[index];
+              return ActivityCard(
+                activity: activity,
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/activity-detail',
+                    arguments: activity,
+                  );
+                },
+              );
+            },
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, '/new-activity'),
+        child: const Icon(Icons.add),
+      ),
+      bottomNavigationBar: const BottomNavBar(currentIndex: 1),
+    );
+  }
+}
