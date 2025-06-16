@@ -1,4 +1,4 @@
-import 'package:android_app/core/presentation/widgets/bottom_nav_bar.dart';
+import 'package:android_app/core/presentation/widgets/app_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
           _buildActivityHistory(context),
         ],
       ),
-      bottomNavigationBar: const BottomNavBar(currentIndex: 0),
+      bottomNavigationBar: const AppNavBar(currentIndex: 0),
     );
   }
 

@@ -1,4 +1,4 @@
-import 'package:android_app/core/presentation/widgets/bottom_nav_bar.dart';
+import 'package:android_app/core/presentation/widgets/app_nav_bar.dart';
 import 'package:android_app/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:android_app/features/activity/presentation/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +66,7 @@ class ActivityListScreen extends StatelessWidget {
         onPressed: () => Navigator.pushNamed(context, '/new-activity'),
         child: const Icon(Icons.add),
       ),
-      bottomNavigationBar: const BottomNavBar(currentIndex: 1),
+      bottomNavigationBar: const AppNavBar(currentIndex: 1),
     );
   }
 }

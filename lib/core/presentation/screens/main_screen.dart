@@ -1,4 +1,4 @@
-import 'package:android_app/core/presentation/widgets/bottom_nav_bar.dart';
+import 'package:android_app/core/presentation/widgets/app_nav_bar.dart';
 import 'package:android_app/features/activity/presentation/screens/activity_list_screen.dart';
 import 'package:android_app/features/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavBar(
+      bottomNavigationBar: AppNavBar(
         currentIndex: _currentIndex,
       ),
     );

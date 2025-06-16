@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
             return ActivityDetailScreen(activity: activity);
           },
           '/new-activity': (context) => const NewActivityScreen(),
+          '/profile': (context) => const ProfileScreen(),
         },
       ),
     );

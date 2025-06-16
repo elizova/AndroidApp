@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatelessWidget {
+class AppNavBar extends StatelessWidget {
   final int currentIndex;
 
-  const BottomNavBar({
+  const AppNavBar({
     super.key,
     required this.currentIndex,
   });
@@ -13,6 +13,7 @@ class BottomNavBar extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: (index) {
+        if (currentIndex == index) return;
         switch (index) {
           case 0:
             Navigator.pushReplacementNamed(context, '/profile');
