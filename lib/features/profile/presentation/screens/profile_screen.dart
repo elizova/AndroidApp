@@ -1,5 +1,5 @@
+import 'package:android_app/core/presentation/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/presentation/widgets/bottom_nav_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -136,4 +136,4 @@ class ProfileScreen extends StatelessWidget {
       ],
     );
   }
-} 
+}

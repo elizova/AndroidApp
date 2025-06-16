@@ -1,6 +1,6 @@
-import '../../domain/entities/activity.dart';
-import '../../domain/repositories/activity_repository.dart';
-import '../database/database_helper.dart';
+import 'package:android_app/data/database/database_helper.dart';
+import 'package:android_app/domain/entities/activity.dart';
+import 'package:android_app/domain/repositories/activity_repository.dart';
 
 class ActivityRepositoryImpl implements ActivityRepository {
   final DatabaseHelper _databaseHelper;
@@ -32,4 +32,4 @@ class ActivityRepositoryImpl implements ActivityRepository {
   Future<void> deleteActivity(int id) async {
     await _databaseHelper.deleteActivity(id);
   }
-} 
+}

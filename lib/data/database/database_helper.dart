@@ -1,6 +1,6 @@
-import 'package:sqflite/sqflite.dart';
+import 'package:android_app/domain/entities/activity.dart';
 import 'package:path/path.dart';
-import '../../domain/entities/activity.dart';
+import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
   static const _databaseName = "activity_tracker.db";
@@ -55,18 +55,22 @@ class DatabaseHelper {
 
   Future<List<Activity>> getActivities() async {
     final db = await database;
-    final List<Map<String, dynamic>> activityMaps = await db.query(tableActivities);
-    
-    return activityMaps.map((map) => Activity(
-      id: map[columnId],
-      type: ActivityType.values.firstWhere(
-        (e) => e.toString() == map[columnType],
-      ),
-      startTime: DateTime.fromMillisecondsSinceEpoch(map[columnStartTime]),
-      endTime: map[columnEndTime] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map[columnEndTime])
-          : null,
-    )).toList();
+    final List<Map<String, dynamic>> activityMaps =
+        await db.query(tableActivities);
+
+    return activityMaps
+        .map((map) => Activity(
+              id: map[columnId],
+              type: ActivityType.values.firstWhere(
+                (e) => e.toString() == map[columnType],
+              ),
+              startTime:
+                  DateTime.fromMillisecondsSinceEpoch(map[columnStartTime]),
+              endTime: map[columnEndTime] != null
+                  ? DateTime.fromMillisecondsSinceEpoch(map[columnEndTime])
+                  : null,
+            ))
+        .toList();
   }
 
   Future<void> updateActivity(Activity activity) async {
@@ -91,4 +95,4 @@ class DatabaseHelper {
       whereArgs: [id],
     );
   }
-} 
+}
