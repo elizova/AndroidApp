@@ -4,17 +4,12 @@ import 'package:android_app/features/activity/presentation/widgets/activity_card
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ActivityListScreen extends StatelessWidget {
-  const ActivityListScreen({super.key});
+class ActivitiesTab extends StatelessWidget {
+  const ActivitiesTab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: const Text('Activities'),
-        elevation: 0,
-      ),
       body: BlocBuilder<ActivityBloc, ActivityState>(
         builder: (context, activities) {
           if (activities.isEmpty) {

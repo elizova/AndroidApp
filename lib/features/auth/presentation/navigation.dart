@@ -4,6 +4,6 @@ import 'package:flutter/material.dart';
 abstract final class AuthNavigation {
   static void navigateAfterAuth(BuildContext context) {
     Navigator.of(context).popAll();
-    Navigator.pushReplacementNamed(context, '/activities');
+    Navigator.pushReplacementNamed(context, '/activity');
   }
 }
