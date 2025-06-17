@@ -126,7 +126,7 @@ class AppTheme {
         color: _surfaceColor,
         elevation: 2,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(4),
         ),
         margin: EdgeInsets.zero,
       ),

@@ -43,15 +43,18 @@ class ActivitiesTab extends StatelessWidget {
             itemCount: activities.length,
             itemBuilder: (context, index) {
               final activity = activities[index];
-              return ActivityCard(
-                activity: activity,
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    AppRoutes.activityDetail,
-                    arguments: activity,
-                  );
-                },
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ActivityCard(
+                  activity: activity,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.activityDetail,
+                      arguments: activity,
+                    );
+                  },
+                ),
               );
             },
           );

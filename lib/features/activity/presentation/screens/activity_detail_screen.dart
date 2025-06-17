@@ -1,5 +1,6 @@
 import 'package:android_app/core/theme/app_theme.dart';
 import 'package:android_app/domain/entities/activity.dart';
+import 'package:android_app/features/activity/presentation/widgets/activity_fields.dart';
 import 'package:android_app/features/activity/ui_activity.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
@@ -42,17 +43,10 @@ class ActivityDetailScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildInfoRow(
-          context,
-          '${activity.distance.toStringAsFixed(2)} км',
-        ),
-        Text('${DateTime.now().difference(activity.startTime).inHours} часов '
-            'назад'),
+        ActivityDistance(activity.distance),
+        ActivityTimeAgo(activity.startTime),
         const SizedBox(height: 16),
-        _buildInfoRow(
-          context,
-          _formatDuration(curDuration),
-        ),
+        ActivityCurDuration(activity),
         Row(
           children: <Widget>[
             Row(
@@ -75,7 +69,7 @@ class ActivityDetailScreen extends StatelessWidget {
         const SizedBox(height: 16),
         TextFormField(
           initialValue: 'comment_stub',
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: 'Комментарий',
           ),
         ),
@@ -83,38 +77,7 @@ class ActivityDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoRow(
-    BuildContext context,
-    String value,
-  ) {
-    return Row(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              value,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Duration get curDuration =>
-      activity.duration ?? DateTime.now().difference(activity.startTime);
-
   String _formatDateTime(DateTime dateTime) {
     return DateFormat('HH:mm').format(dateTime);
-  }
-
-  String _formatDuration(Duration duration) {
-    final hours = duration.inHours;
-    final minutes = duration.inMinutes.remainder(60);
-    if (hours > 0) {
-      return '$hours ч $minutes мин';
-    }
-    return '$minutes мин';
   }
 }

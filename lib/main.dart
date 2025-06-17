@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Activity Tracker',
         theme: AppTheme.lightTheme,
-        initialRoute: '/welcome',
+        initialRoute: AppRoutes.welcome,
         routes: {
           AppRoutes.welcome: (context) => const WelcomeScreen(),
           AppRoutes.main: (context) => const MainScreen(),
