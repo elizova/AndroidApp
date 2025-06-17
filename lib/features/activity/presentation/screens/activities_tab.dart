@@ -1,4 +1,4 @@
-import 'package:android_app/core/routes/app_routes.dart';
+import 'package:android_app/core/presentation/app_routes.dart';
 import 'package:android_app/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:android_app/features/activity/presentation/widgets/activity_card.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
-import 'package:android_app/core/routes/app_routes.dart';
-import 'package:android_app/core/theme/app_theme.dart';
+import 'package:android_app/core/presentation/app_routes.dart';
+import 'package:android_app/core/presentation/app_theme.dart';
 import 'package:android_app/domain/entities/activity.dart';
 import 'package:android_app/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:android_app/features/activity/presentation/screens/activity_detail_screen.dart';

@@ -1,4 +1,4 @@
-import 'package:android_app/core/theme/app_theme.dart';
+import 'package:android_app/core/presentation/app_theme.dart';
 import 'package:android_app/domain/entities/activity.dart';
 import 'package:android_app/features/activity/presentation/widgets/activity_fields.dart';
 import 'package:android_app/features/activity/ui_activity.dart';

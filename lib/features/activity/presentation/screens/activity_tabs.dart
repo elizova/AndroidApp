@@ -17,7 +17,7 @@ class ActivityTabs extends StatelessWidget {
                 child: TabBar(
                   tabs: [
                     Tab(text: 'Моя'),
-                    Tab(text: 'Пользователи'),
+                    Tab(text: 'Пользователей'),
                   ],
                 ),
               ),
