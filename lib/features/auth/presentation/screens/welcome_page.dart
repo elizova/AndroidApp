@@ -2,8 +2,8 @@ import 'package:android_app/core/presentation/app_routes.dart';
 import 'package:android_app/core/presentation/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

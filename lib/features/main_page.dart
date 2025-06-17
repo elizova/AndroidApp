@@ -1,15 +1,15 @@
-import 'package:android_app/features/activity/presentation/screens/activity_tabs.dart';
+import 'package:android_app/features/activity/presentation/screens/activity_tabs_page.dart';
 import 'package:android_app/features/profile/presentation/profile_tab.dart';
 import 'package:flutter/material.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   @override
@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
       body: IndexedStack(
         index: _selectedIndex,
         children: const [
-          ActivityTabs(),
+          ActivityTabsPage(),
           ProfileTab(),
         ],
       ),

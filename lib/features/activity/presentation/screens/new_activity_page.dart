@@ -5,8 +5,8 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class NewActivityScreen extends StatelessWidget {
-  const NewActivityScreen({super.key});
+class NewActivityPage extends StatelessWidget {
+  const NewActivityPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,10 +6,10 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class ActivityDetailScreen extends StatelessWidget {
+class ActivityDetailPage extends StatelessWidget {
   final Activity activity;
 
-  const ActivityDetailScreen({
+  const ActivityDetailPage({
     super.key,
     required this.activity,
   });
