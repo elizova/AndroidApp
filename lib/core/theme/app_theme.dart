@@ -8,6 +8,7 @@ class AppTheme {
   static const _backgroundColor = Color(0xFFF5F5F5);
   static const _surfaceColor = Color(0xFFFFFFFF);
   static const _textColor = Color(0xFF1A1A1A);
+  static const _secondaryColor = Color(0x4F4B09F3);
   static const _secondaryTextColor = Color(0xFF757575);
   static const _borderColor = Color(0xFFE0E0E0);
 
@@ -18,7 +19,7 @@ class AppTheme {
         primary: _primaryColor,
         surface: _surfaceColor,
         onSurface: _textColor,
-        secondary: _secondaryTextColor,
+        secondary: _secondaryColor,
       ),
       scaffoldBackgroundColor: _backgroundColor,
       appBarTheme: const AppBarTheme(
@@ -31,6 +32,10 @@ class AppTheme {
           fontWeight: FontWeight.w600,
           height: 1.2,
         ),
+      ),
+      tabBarTheme: const TabBarThemeData(
+        dividerColor: Colors.transparent,
+        indicatorSize: TabBarIndicatorSize.tab,
       ),
       textTheme: const TextTheme(
         headlineLarge: TextStyle(

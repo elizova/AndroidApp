@@ -3,7 +3,7 @@ import 'package:android_app/core/theme/app_theme.dart';
 import 'package:android_app/domain/entities/activity.dart';
 import 'package:android_app/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:android_app/features/activity/presentation/screens/activity_detail_screen.dart';
-import 'package:android_app/features/activity/presentation/screens/activity_page.dart';
+import 'package:android_app/features/activity/presentation/screens/activity_tabs.dart';
 import 'package:android_app/features/activity/presentation/screens/new_activity_screen.dart';
 import 'package:android_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:android_app/features/auth/presentation/screens/register_screen.dart';

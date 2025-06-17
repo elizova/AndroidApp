@@ -24,12 +24,12 @@ class ActivitiesTab extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'No activities yet',
+                    'Время потренить',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Start tracking your activities',
+                    'Нажимай на кнопку ниже и начинаем трекать активность',
                     style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
@@ -58,8 +58,9 @@ class ActivitiesTab extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: null,
         onPressed: () => Navigator.pushNamed(context, AppRoutes.newActivity),
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.play_arrow_sharp),
       ),
     );
   }

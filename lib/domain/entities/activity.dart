@@ -5,6 +5,7 @@ part 'activity.freezed.dart';
 enum ActivityType {
   bicycle,
   running,
+  walking,
 }
 
 @freezed

@@ -1,5 +1,4 @@
-import 'package:android_app/features/activity/presentation/screens/activity_page.dart';
-import 'package:android_app/features/activity/presentation/screens/new_activity_screen.dart';
+import 'package:android_app/features/activity/presentation/screens/activity_tabs.dart';
 import 'package:android_app/features/profile/presentation/profile_tab.dart';
 import 'package:flutter/material.dart';
 
@@ -23,37 +22,23 @@ class _MainScreenState extends State<MainScreen> {
           ProfileTab(),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          if (_selectedIndex == index) return;
+          setState(() => _selectedIndex = index);
         },
-        destinations: const [
-          NavigationDestination(
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.directions_run),
             label: 'Активность',
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Профиль',
           ),
         ],
       ),
-      floatingActionButton: _selectedIndex == 0
-          ? FloatingActionButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const NewActivityScreen(),
-                  ),
-                );
-              },
-              child: const Icon(Icons.add),
-            )
-          : null,
     );
   }
 }

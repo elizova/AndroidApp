@@ -44,19 +44,14 @@ class ActivityCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      username,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            height: 1.2,
-                          ),
-                    ),
+                    Text(username,
+                        style: Theme.of(context).textTheme.titleMedium),
                     const SizedBox(height: 4),
                     Text(
                       activityType.toUpperCase(),
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.w500,
-                            height: 1.2,
                           ),
                     ),
                   ],
@@ -83,15 +78,6 @@ class ActivityCard extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-IconData activityIcon(ActivityType type) {
-  switch (type) {
-    case ActivityType.bicycle:
-      return Icons.directions_bike;
-    case ActivityType.running:
-      return Icons.directions_run;
   }
 }
 

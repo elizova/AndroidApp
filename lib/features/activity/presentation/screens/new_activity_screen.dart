@@ -1,151 +1,103 @@
 import 'package:android_app/domain/entities/activity.dart';
 import 'package:android_app/features/activity/presentation/bloc/activity_bloc.dart';
+import 'package:android_app/features/activity/ui_activity.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
-class NewActivityScreen extends StatefulWidget {
+class NewActivityScreen extends StatelessWidget {
   const NewActivityScreen({super.key});
-
-  @override
-  State<NewActivityScreen> createState() => _NewActivityScreenState();
-}
-
-class _NewActivityScreenState extends State<NewActivityScreen> {
-  final _formKey = GlobalKey<FormState>();
-  ActivityType _selectedType = ActivityType.running;
-  final _distanceController = TextEditingController();
-  DateTime _startTime = DateTime.now();
-  DateTime _endTime = DateTime.now().add(const Duration(hours: 1));
-
-  @override
-  void dispose() {
-    _distanceController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Activity'),
+        forceMaterialTransparency: true,
       ),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            _buildActivityTypeSelector(),
-            const SizedBox(height: 24),
-            _buildDistanceField(),
-            const SizedBox(height: 24),
-            _buildTimeSelector(
-              label: 'Start Time',
-              value: _startTime,
-              onChanged: (time) {
-                setState(() {
-                  _startTime = time;
-                  if (_endTime.isBefore(_startTime)) {
-                    _endTime = _startTime.add(const Duration(hours: 1));
-                  }
-                });
-              },
+      body: Stack(
+        children: [
+          const Center(
+            child: Text('Здесь должна быть карта'),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).canvasColor,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(25),
+                ),
+              ),
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0).copyWith(top: 25),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Погнали? :)',
+                        style: TextTheme.of(context).headlineSmall,
+                      ),
+                      const SizedBox(height: 24),
+                      const _OptionChips(),
+                    ],
+                  ),
+                ),
+              ),
             ),
-            const SizedBox(height: 16),
-            _buildTimeSelector(
-              label: 'End Time',
-              value: _endTime,
-              onChanged: (time) {
-                setState(() {
-                  if (time.isAfter(_startTime)) {
-                    _endTime = time;
-                  }
-                });
-              },
-            ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: _submitForm,
-              child: const Text('Save Activity'),
-            ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
+}
 
-  Widget _buildActivityTypeSelector() {
+class _OptionChips extends StatefulWidget {
+  const _OptionChips();
+
+  @override
+  State<_OptionChips> createState() => _OptionChipsState();
+}
+
+class _OptionChipsState extends State<_OptionChips> {
+  ActivityType _selectedType = ActivityType.bicycle;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          'Activity Type',
-          style: Theme.of(context).textTheme.titleMedium,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: <Widget>[
+              for (final type in ActivityType.values)
+                ChoiceChip(
+                  selected: type == _selectedType,
+                  onSelected: (selected) {
+                    if (!selected) return;
+                    setState(() => _selectedType = type);
+                  },
+                  label: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(type.label),
+                      ),
+                      Icon(type.icon),
+                    ],
+                  ),
+                ),
+            ].addBetween(const SizedBox(width: 8)),
+          ),
         ),
-        const SizedBox(height: 8),
-        Wrap(
-          spacing: 8,
-          children: ActivityType.values.map((type) {
-            return ChoiceChip(
-              label: Text(type.toString().split('.').last),
-              selected: _selectedType == type,
-              onSelected: (selected) {
-                if (selected) {
-                  setState(() {
-                    _selectedType = type;
-                  });
-                }
-              },
-            );
-          }).toList(),
-        ),
+        const SizedBox(height: 24),
+        ElevatedButton(
+          onPressed: _submitForm,
+          child: const Text('Начать'),
+        )
       ],
-    );
-  }
-
-  Widget _buildDistanceField() {
-    return TextFormField(
-      controller: _distanceController,
-      decoration: const InputDecoration(
-        labelText: 'Distance (km)',
-        border: OutlineInputBorder(),
-      ),
-      keyboardType: TextInputType.number,
-    );
-  }
-
-  Widget _buildTimeSelector({
-    required String label,
-    required DateTime value,
-    required ValueChanged<DateTime> onChanged,
-  }) {
-    return InkWell(
-      onTap: () async {
-        final time = await showTimePicker(
-          context: context,
-          initialTime: TimeOfDay.fromDateTime(value),
-        );
-        if (time != null) {
-          final newDateTime = DateTime(
-            value.year,
-            value.month,
-            value.day,
-            time.hour,
-            time.minute,
-          );
-          onChanged(newDateTime);
-        }
-      },
-      child: InputDecorator(
-        decoration: InputDecoration(
-          labelText: label,
-          border: const OutlineInputBorder(),
-        ),
-        child: Text(
-          DateFormat('HH:mm').format(value),
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-      ),
     );
   }
 
@@ -153,8 +105,8 @@ class _NewActivityScreenState extends State<NewActivityScreen> {
     final activity = Activity(
       id: DateTime.now().millisecondsSinceEpoch,
       type: _selectedType,
-      startTime: _startTime,
-      endTime: _endTime,
+      startTime: DateTime.now(),
+      endTime: null,
     );
 
     context.read<ActivityBloc>().add(ActivityEvent.add(activity));
