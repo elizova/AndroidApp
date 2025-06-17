@@ -8,7 +8,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.authScreensBackgroundColor,
+      backgroundColor: AppTheme.whiteBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -34,12 +34,14 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   ElevatedButton(
-                    onPressed: () => Navigator.pushNamed(context, AppRoutes.register),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, AppRoutes.register),
                     child: const Text('Зарегистрироваться'),
                   ),
                   const SizedBox(height: 16),
                   TextButton(
-                    onPressed: () => Navigator.pushNamed(context, AppRoutes.login),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, AppRoutes.login),
                     child: const Text('Уже есть аккаунт'),
                   ),
                 ],

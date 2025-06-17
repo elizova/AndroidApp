@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.authScreensBackgroundColor,
+      backgroundColor: AppTheme.whiteBackgroundColor,
       appBar: AppBar(
         title: const Text('Вход'),
       ),
@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => AuthNavigation.navigateAfterAuth(context),
+                  onPressed: () => AuthNavigation.navigateOnAuthed(context),
                   child: const Text('Войти'),
                 ),
               ),

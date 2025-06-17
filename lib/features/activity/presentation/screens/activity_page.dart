@@ -1,8 +1,8 @@
 import 'package:android_app/features/activity/presentation/screens/activities_tab.dart';
 import 'package:flutter/material.dart';
 
-class ActivityPage extends StatelessWidget {
-  const ActivityPage({super.key});
+class ActivityTabs extends StatelessWidget {
+  const ActivityTabs({super.key});
 
   @override
   Widget build(BuildContext context) {

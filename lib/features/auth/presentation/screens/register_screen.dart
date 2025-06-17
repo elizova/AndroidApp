@@ -28,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.authScreensBackgroundColor,
+      backgroundColor: AppTheme.whiteBackgroundColor,
       appBar: AppBar(
         title: const Text('Create Account'),
       ),
@@ -69,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: () => AuthNavigation.navigateAfterAuth(context),
+              onPressed: () => AuthNavigation.navigateOnAuthed(context),
               child: const Text('Зарегистрироваться'),
             ),
             const SizedBox(height: 24),

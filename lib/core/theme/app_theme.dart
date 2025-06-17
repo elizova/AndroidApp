@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   const AppTheme._();
 
-  static const authScreensBackgroundColor = Color(0xFFFFFFFF);
+  static const whiteBackgroundColor = Color(0xFFFFFFFF);
   static const _primaryColor = Color(0xFF4B09F3);
   static const _backgroundColor = Color(0xFFF5F5F5);
   static const _surfaceColor = Color(0xFFFFFFFF);

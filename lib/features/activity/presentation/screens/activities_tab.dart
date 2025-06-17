@@ -1,4 +1,4 @@
-import 'package:android_app/core/presentation/widgets/app_nav_bar.dart';
+import 'package:android_app/core/routes/app_routes.dart';
 import 'package:android_app/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:android_app/features/activity/presentation/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +48,7 @@ class ActivitiesTab extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(
                     context,
-                    '/activity-detail',
+                    AppRoutes.activityDetail,
                     arguments: activity,
                   );
                 },
@@ -58,10 +58,9 @@ class ActivitiesTab extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, '/new-activity'),
+        onPressed: () => Navigator.pushNamed(context, AppRoutes.newActivity),
         child: const Icon(Icons.add),
       ),
-      bottomNavigationBar: const AppNavBar(currentIndex: 1),
     );
   }
 }

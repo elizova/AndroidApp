@@ -7,8 +7,11 @@ abstract final class AppRoutes {
   static const String register = '/register';
 
   // Main routes
-  static const String activities = '/activities';
-  static const String activityDetail = '/activity-detail';
-  static const String newActivity = '/new-activity';
-  static const String profile = '/profile';
-} 
+  static const String main = '/main';
+  static const String profile = '$main/profile';
+  static const String passwordEditing = '$main/password_editing';
+
+  static const String activities = '$main/activities';
+  static const String activityDetail = '$activities/activity-detail';
+  static const String newActivity = '$activities/new-activity';
+}
